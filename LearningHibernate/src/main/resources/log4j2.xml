@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--aggregating file of log4j that will allows to see the information on the console-->
+<Configuration status="INFO">
+    <Apenders>
+        <!--whe have many kinds of appenders as console, database, send information throught email-->
+        <Console name="Console" target="SYSTEM_OUT"> //SYSTEM_OUT: console of java  
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" /> 
+            <!--we can check documentation of log4j to modify this pattern--> 
+        </Console>
+        
+    </Apenders>
+    <Loggers>
+        <!--name="org.hibernate.SQL" : logger for name="org.hibernate.SQL"-->
+        <!--org.hibernate.SQL  :  to display the information of SQL that will be executed in our application-->
+        <!--level="debug"  :  the information will be showed to basic level-->
+        <!--additivity="false" : to void duplicate the information in our logger file--> 
+        <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+            
+            <!--ref="Console" : to refer to console appender-->
+            <AppenderRef ref="Console" />
+        </Logger>
+        
+        <!--name="org.hibernate.type.descriptor.sql.BasicBinder" : to display params that was added to sql-->
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace" additivity="false">
+            <AppenderRef ref="Console" />
+            
+        </Logger>
+        
+        <!--level="info" : specifiying level of log4j-->
+        <!--level="info" : to display information relate to another packages on the console-->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+    
+</Configuration>

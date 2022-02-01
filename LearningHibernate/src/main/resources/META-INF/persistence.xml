@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--this xml file is important because we are working with JPA and hibernate-->
+<!--======================== configurating xml persistence header file  ========================-->
+<!--version="2.2" : JPA version-->
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence      http://xmlns.jcp.org/xml/ns/persistence_2_2.xsd">
+  <!--defining persistence unit-->
+  <!--name="HibernateExample1" : SECTION 402-->
+  <!--name="HibernatePU" -> hibernate persistence unit : SECTION 410-->
+  <persistence-unit name="HibernatePU" transaction-type="RESOURCE_LOCAL">
+    <!--specifiying the provider because we are working with JPA-->
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <!--defining package where will be the persistence classes that we will use-->
+    <!--<class>SECTION_410_HibernateBasicOptions.domain.Person</class>-->
+    <class>SESECTION_106_HibernateBasicOperations.mx.com.gm.domain.Person</class>
+    <properties>
+      <!--defining properties to connect with database MySQL-->
+      <!--&useTimezone=true&serverTimezone=UTC : specifiying timezone-->
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/javadatabase?useSSL=true&amp;useTimezone=true&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <!--to display sql that is executing in the console-->
+      <property name="hibernate.show_sql" value="true"/>
+      <!--to set the dialect-->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+    </properties>
+  </persistence-unit>
+</persistence>

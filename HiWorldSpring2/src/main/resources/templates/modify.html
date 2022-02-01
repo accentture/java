@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--ns: name space-->
+<!--xmlns="http://www.w3.org/1999/xhtml"  : to void errors on by the compiler, and we are obliged to close all tags (/)-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" >
+    <head>
+        <title>Person DATA</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Person DATA</h1>
+        <a th:href="@{/spring-data}">Return</a>
+        <br/>
+        
+        <!--th:object="${person}"  : to associate an Person object-->
+        <form th:action="@{/save}" method="post" th:object="${person}">
+                
+                <!--type"hidden" : to hidde the input in the view-->
+                <!--after to add this input hidden, we can update an record thanks to spring boot-->
+            <input type="hidden" name="idPerson" th:field="*{idPerson}"/> 
+            
+            <label for="name">Name:</label>
+                                                    <!--* : asterisc is to select the attribute of object that we associed with the form-->
+            <input type="text" name="name" th:field="*{name}"/>
+            <br/>
+            
+            <label for="surnames">Surnames</label>
+            <input type="text" name="surnames" th:field="*{surnames}"/>
+            <br/>
+            
+            <label for="email">Email:</label>
+            <input type="email" name="email" th:field="*{email}"/>
+            <br/>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" name="phone" th:field="*{phone}"/>
+            <br/>
+            
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>

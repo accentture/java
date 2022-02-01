@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!--xmlns:th="http://www.thymeleaf.org" : to add thymeleaf tags-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+<!--        <title>Start</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    </head>
+
+    <!--Thymeleaf is very friendly with HTML 5-->
+    <body>
+        <h1>Start</h1>
+        <!--${} : expresion language to access to value of variables-->    
+        <p th:text="${message}"></p>
+        <p th:text="${greetFromConfig}"></p>
+
+        <br/>
+        <h2>Model Spring</h2>
+        Name: <span th:text="${person.name}">Show name</span> 
+
+        <br/>
+        <h2>Model Spring</h2>
+        Surame: <span th:text="${person.surnames}">Show surname</span> 
+
+        <br/>
+        <h2>Model Spring</h2>
+        Email: <span th:text="${person.email}">Show email</span> 
+
+        <br/>
+        <h2>Model Spring</h2>
+        Phone: <span th:text="${person.phone}">Show phone</span> 
+
+        <br/>
+        <!--th: prefix of thymeleaf-->
+        <h3>table with Persons</h3>
+        <div th:if="${people != null and !people.empty}">
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+
+                <!--th:each   :  to iterate--> 
+                <tr th:each="perso : ${people }">
+                    <td th:text="${perso.name}">Show name</td> 
+                    <td th:text="${perso.surnames}">Show surname</td> 
+                    <td th:text="${perso.email}">Show email</td> 
+                    <td th:text="${perso.phone}">Show phone</td> 
+                </tr>
+        </div>
+
+        <div th:if="${people == null or people.empty}">
+            <div>The list is empty</div>
+        </div>
+
+    </table>
+
+
+</body>
+</html>
